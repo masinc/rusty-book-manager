@@ -3,6 +3,19 @@ name = "rusty-book-manager"
 version = "0.1.0"
 edition = "2021"
 
+[[bin]]
+name = "app"
+src = "src/bin/app.rs"
+
+[workspace]
+members = [
+    "api",
+    "kernel",
+    "adapter",
+    "shared",
+    "registry"
+]
+
 [dependencies]
 anyhow = "1"
 
