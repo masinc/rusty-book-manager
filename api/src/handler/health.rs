@@ -17,6 +17,7 @@ pub async fn health_check_db(State(registry): State<AppRegistry>) -> StatusCode 
 #[cfg(test)]
 mod tests {
     use super::*;
+    use adapter::database::ConnectionPool;
 
     #[tokio::test]
     async fn test_health_check_works() {
@@ -25,8 +26,9 @@ mod tests {
     }
 
     #[sqlx::test]
-    async fn test_health_check_db_works(pool: PgPool) {
-        let status_code = health_check_db(State(pool)).await;
+    async fn test_health_check_db_works(pool: sqlx::PgPool) {
+        let registry = AppRegistry::new(ConnectionPool::new(pool));
+        let status_code = health_check_db(State(registry)).await;
         assert_eq!(status_code, StatusCode::OK);
     }
 }

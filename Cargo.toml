@@ -24,6 +24,7 @@ registry = { path = "registry" }
 shared = { path = "shared" }
 
 anyhow = "1"
+thiserror = "2"
 rstest = "0.23"
 async-trait = "0.1"
 derive-new = "0.7"
@@ -51,6 +52,20 @@ features = [
     "postgres",
     "migrate"
 ]
+
+[workspace.dependencies.uuid]
+version = "1"
+features = [
+    "v4",
+    "serde"
+]
+
+[workspace.dependencies.serde]
+version = "1"
+features = [
+    "derive"
+]
+
 
 [dependencies]
 adapter.workspace = true

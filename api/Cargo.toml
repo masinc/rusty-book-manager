@@ -10,3 +10,4 @@ axum.workspace = true
 [dev-dependencies]
 tokio.workspace = true
 sqlx.workspace = true
+adapter.workspace = true
