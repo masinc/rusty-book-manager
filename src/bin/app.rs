@@ -1,4 +1,5 @@
 use adapter::database::connect_database_with;
+use api::route::book::build_book_routes;
 use api::route::health::build_health_check_routers;
 use axum::Router;
 use registry::AppRegistry;
@@ -13,6 +14,7 @@ async fn bootstrap() -> anyhow::Result<()> {
     let registry = AppRegistry::new(pool);
 
     let app = Router::new()
+        .merge(build_book_routes())
         .merge(build_health_check_routers())
         .with_state(registry);
 

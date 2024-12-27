@@ -5,7 +5,14 @@ edition = "2021"
 
 [dependencies]
 registry.workspace = true
+kernel.workspace = true
+shared.workspace = true
 axum.workspace = true
+derive-new.workspace = true
+serde.workspace = true
+anyhow.workspace = true
+uuid.workspace = true
+thiserror.workspace = true
 
 [dev-dependencies]
 tokio.workspace = true
