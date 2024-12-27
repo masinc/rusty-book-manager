@@ -16,24 +16,32 @@ members = [
     "registry"
 ]
 
-[dependencies]
+[workspace.dependencies]
+adapter = { path = "adapter" }
+api = { path = "api" }
+kernel = { path = "kernel" }
+registry = { path = "registry" }
+shared = { path = "shared" }
+
 anyhow = "1"
+rstest = "0.23"
+async-trait = "0.1"
+derive-new = "0.7"
 
-
-[dependencies.tokio]
+[workspace.dependencies.tokio]
 version = "1"
 features = [
     "full"
 ]
 
-[dependencies.axum]
+[workspace.dependencies.axum]
 version = "0.7"
 features = [
     "macros"
 ]
 
 
-[dependencies.sqlx]
+[workspace.dependencies.sqlx]
 version = "0.8"
 features = [
     "runtime-tokio",
@@ -44,5 +52,19 @@ features = [
     "migrate"
 ]
 
+[dependencies]
+adapter.workspace = true
+api.workspace = true
+kernel.workspace = true
+registry.workspace = true
+shared.workspace = true
+anyhow.workspace = true
+tokio.workspace = true
+sqlx.workspace = true
+axum.workspace = true
+
+
 [dev-dependencies]
-rstest = "0.23"
+rstest.workspace = true
+
+
