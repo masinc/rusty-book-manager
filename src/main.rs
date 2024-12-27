@@ -8,14 +8,16 @@ async fn hello_world() -> &'static str {
 }
 
 #[tokio::main]
-async fn main() {
+async fn main() -> anyhow::Result<()> {
     let app = Router::new().route("/hello", get(hello_world));
 
     let addr = SocketAddr::new(Ipv4Addr::LOCALHOST.into(), 8080);
 
-    let listener = TcpListener::bind(&addr).await.unwrap();
+    let listener = TcpListener::bind(&addr).await?;
 
     println!("Listening on {}", addr);
 
-    axum::serve(listener, app).await.unwrap();
+    axum::serve(listener, app).await?;
+
+    Ok(())
 }
