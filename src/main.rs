@@ -21,3 +21,14 @@ async fn main() -> anyhow::Result<()> {
 
     Ok(())
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[tokio::test]
+    async fn test_health_check_works() {
+        let status_code = health_check().await;
+        assert_eq!(status_code, StatusCode::OK);
+    }
+}
