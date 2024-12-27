@@ -20,5 +20,16 @@ features = [
 ]
 
 
+[dependencies.sqlx]
+version = "0.8"
+features = [
+    "runtime-tokio",
+    "uuid",
+    "chrono",
+    "macros",
+    "postgres",
+    "migrate"
+]
+
 [dev-dependencies]
 rstest = "0.23"
