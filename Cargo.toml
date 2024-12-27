@@ -4,3 +4,19 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+
+[dependencies.tokio]
+version = "1"
+features = [
+    "full"
+]
+
+[dependencies.axum]
+version = "0.7"
+features = [
+    "macros"
+]
+
+
+[dev-dependencies]
+rstest = "0.23"
